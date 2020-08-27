@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>It's a table!</title>
+  <link rel="stylesheet" type="text/css" href="../stylesheets/layout.css">
+  <script src="../public/javascript/jsfile.js"></script>
+</head>
+
+<body>
+  <div class="content-wrap">
+    <header>
+      <h1>It's A Table Scraper!</h1>
+    </header>
+      <div id="headerBorder"></div>
+      <h2>Results</h2>
+      <table id="theTable" style="cursor: pointer;">
+      </table>
+      <h2>Histogram</h2>
+      <table id="histogram">
+      </table>
+      <div id="resultTarget">
+        <p id="categories" class="hidden"><%= categories %></p>
+        <p id="result" class="hidden"><%= results %></p>
+        <p id="histData" class="hidden"><%= histoData %></p>
+      </div>
+      <h2 class="hidden">Categories</h2>
+      <table id="categoriesTable" style="cursor: pointer;" class="hidden">
+        <tr id="categoriesHeader">
+        </tr>
+      </table>
+  </div>
+   <!-- <p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p> -->
+</body>
+
+</html>

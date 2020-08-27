@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8" />
+   <title>It's a table!</title>
+   <link rel="stylesheet" type="text/css" href="../public/stylesheet/layout.css">
+   <script src="../public/javascript/result.js"></script>
+</head>
+
+<body>
+  <div class="content-wrap">
+     <header>
+     		<h1>WoW IT'S A TABLE!</h1>
+     </header>
+     <div id="headerBorder"></div>
+     <form method="post">
+       <label for="Name">Name:</label><br><input type="text" id="Name" name="name"><br>
+       <label for="Email">Email:</label><br><input type="email" id="Email" name="email"><br>
+       <label for= "Age">Age:</label><br><input type="number" id="Age" name="age"><br><br>
+       <input type="submit" value="Submit" formaction="/submit" style="cursor: pointer;">
+       <input type="submit" value="Update" formaction="/update" style="cursor: pointer;">
+       <input type="submit" value="Delete" formaction="/delete" style="cursor: pointer;">
+     </form>
+     <h3>Sort</h3>
+     <div>
+      <button type="button" onclick="sortTableBy(0)" style="cursor: pointer;">By Name</button>
+      <button type="button" onclick="sortTableBy(1)" style="cursor: pointer;">By Email</button>
+      <button type="button" onclick="sortTableBy(2)" style="cursor: pointer;">By Age</button>
+     </div>
+     <br>
+     <h2>Input Table</h2>
+     <table id="theTable" style="cursor: pointer;">
+      <tr>
+       <th>Name</th>
+       <th>Email</th>
+       <th>Age</th>
+      </tr>
+      <% for (var i=0; i<entries.length; i++) { %>
+        <tr>
+          <th><%= entries[i].name %></th>
+          <th><%= entries[i].email %></th>
+          <th><%= entries[i].age %></th>
+        </tr>
+      <% } %>
+     </table>
+     <div id="averageAge">
+       <p id="averageAgeText"></p>
+     </div>
+     <div id="piechart"></div>
+  </div>
+   <!-- <p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p> -->
+</body>
+
+</html>

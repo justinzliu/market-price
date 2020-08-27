@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>It's a table!</title>
+  <link rel="stylesheet" type="text/css" href="../stylesheets/layout.css">
+  <script src="../public/javascript/jsfile.js"></script>
+</head>
+
+<body>
+  <div class="content-wrap">
+    <header>
+      <h1>It's A Table Scraper!</h1>
+    </header>
+      <div id="headerBorder"></div>
+      <h2>Table</h2>
+      <table id="theTable" style="cursor: pointer;">
+      </table><br>
+      <h2>Categories</h2>
+      <table id="categoriesTable" style="cursor: pointer;">
+        <tr id="categoriesHeader">
+        </tr>
+      </table><br>
+      <h3>Sort</h3>
+        <div>
+          <button type="button" onclick="sortTableBy(0)" style="cursor: pointer;">By Name</button>
+          <button type="button" onclick="sortTableBy(1)" style="cursor: pointer;">By Email</button>
+          <button type="button" onclick="sortTableBy(2)" style="cursor: pointer;">By Age</button>
+        </div><br>
+      <div id="resultTarget">
+        <p id="categories"><%= categories %></p>
+        <p id="result"><%= results %></p>
+      </div>
+  </div>
+   <!-- <p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p> -->
+</body>
+
+</html>
