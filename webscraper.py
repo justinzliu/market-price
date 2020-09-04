@@ -9,8 +9,11 @@ def webscrape(URL, string):
 	pstring = processCD(string)
 	page = requests.get(URL)
 	soup = BeautifulSoup(page.content, 'html.parser')
+	#get results in container
 	results = soup.find(id=pstring[0])
 	results = results.find_all(pstring[1], class_=pstring[2])
+	#TODO: get results from dynamic calls
+	#dyn_results = 
 	return results
 
 #process html into dictionary, strip all useless html details 
@@ -28,12 +31,12 @@ def parseContainer(containerList, string):
 			lst.append(obj.copy())
 	return lst, {"categories": pstring[1]}
 
-#process container details
+#process container details string to list
 def processCD(string):
 	pstring = string.split(",")
 	return pstring
 
-#process container entry details
+#process container entry details string to list
 def processCED(string):
 	pstring = string.split("],[")
 	for i, elem in enumerate(pstring):
@@ -42,18 +45,23 @@ def processCED(string):
 	return pstring
 
 def main():
-	#url = "https://www.monster.com/jobs/search/?q=Software-Developer&where=Seattle"
-	#cd = "SearchResults,section,card-content"
-	#ced = "[h2,div,div],[title,company,location]"
-	url = sys.argv[1]
-	cd = sys.argv[2]
-	ced = sys.argv[3]
+	url = "https://www.monster.com/jobs/search/?q=Software-Developer&where=Seattle"
+	cd = "SearchResults,section,card-content"
+	ced = "[h2,div,div],[title,company,location]"
 	results = webscrape(url,cd)
 	objects, categories = parseContainer(results,ced)
-	jsonCategories = json.dumps(categories)
-	jsonObject = json.dumps(objects)
-	print(jsonCategories)
-	print(jsonObject)
+	#print("List: ", objects)
+	###webscraper code
+
+	#url = sys.argv[1]
+	#cd = sys.argv[2]
+	#ced = sys.argv[3]
+	#results = webscrape(url,cd)
+	#objects, categories = parseContainer(results,ced)
+	#jsonCategories = json.dumps(categories)
+	#jsonObject = json.dumps(objects)
+	#print(jsonCategories)
+	#print(jsonObject)
 
 if __name__ == "__main__":
     main()
