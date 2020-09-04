@@ -47,9 +47,10 @@ Javascript: npm, express, body-parser
 Python: beautifulsoup4
 Go: libzmq3-dev (dependency for zmq4), zmq4, encoding/json
 
-## Features
+## 
 
-1. Web Application with the goal of accessible generalized webscraping. Plug in the URL and with minimal details to retrieve the target data.
-2. Upon entry of the necessary details, the application will scrape the target site, return the contents for processing, then display all entries captured as well as a histogram displaying the proportional representation of the entries based on one of the captured details (in our example, its location).
-3. Scraped entries may be sorted by lexigraphical order and selected (resulting in the entry highlighted)
-4. See screencaps folder for screenshots of the project
+## Features
+Schools
+- assigned primary and secondary school of address
+- locations of all private schools in the city
+- locations of all public schools in the city
