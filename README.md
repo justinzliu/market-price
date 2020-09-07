@@ -2,7 +2,7 @@
 
 ## Project Objective/Goal
 
-This project is a webscraper web application with initial intentions for convenient job hunting. Future development will be be aimed towards generality of the tool, focusing to minimize necessary user inputs while maximizing generality and functionality.
+This project is a web application with initial intentions for convenient job hunting. Future development will be be aimed towards generality of the tool, focusing to minimize necessary user inputs while maximizing generality and functionality.
 
 ## Languages & Implementation
 
@@ -50,7 +50,20 @@ Go: libzmq3-dev (dependency for zmq4), zmq4, encoding/json
 ## 
 
 ## Features
-Schools
+
+Overview Page:
+
+School overview
+- assigned primary and secondary school of address (primary, secondary, early french immersion, late french immersion, secondary french immersion)
+- school ranking (primary, secondary, early french immersion, late french immersion, secondary french immersion)
+
+School Page:
+
 - assigned primary and secondary school of address
-- locations of all private schools in the city
-- locations of all public schools in the city
+https://mybaragar.com/index.cfm?event=page.SchoolLocatorPublic&DistrictCode=bc41
+https://stackoverflow.com/questions/4423272/how-to-extract-links-and-titles-from-a-html-page (grab html attribute from searches)
+- locations of all private and public schools in the city
+https://www.compareschoolrankings.org/
+- school ranking
+
+Crime Page:
