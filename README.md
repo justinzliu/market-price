@@ -2,68 +2,48 @@
 
 ## Project Objective/Goal
 
-This project is a web application with initial intentions for convenient job hunting. Future development will be be aimed towards generality of the tool, focusing to minimize necessary user inputs while maximizing generality and functionality.
-
-## Languages & Implementation
-
-This project primarily utilizes three programming languages: Javascript, Python, and Go.
-
-Python was chosen for it's access to powerful webtools for HTML and XML parsing; and HTML requests. Beautiful Soup and Requests were invaluable tools to navigate the complexities of HTML. The dynamic nature of Python was also a benefit as it minimized the necessary expertise in manipulating these complex libraries.
-
-Go was adopted to handle the computationally heavy parts of the project. With the current features added, this included processing the large datasets retrieved by the Python webscraper. Since Go was designed for easy access to concurrent programming (particularly useful for predictable, but large workload computations), it was an obvious choice for the computational side of the web application.   
-
-Given this is a NodeJS web application, Javascript was heavily leveraged. Using the Express framework, a light-weight server was deployed to showcase the project. As this is a web application, CSS and HTML domain languages were also utilized.
-
-## Methods for Communication
-
-NodeJS offers a built-in spawn() method, a foreign function interface that allowed for easy execution of the webscraper. This method facilitated passing the HTML information needed by the webscraper, and the resulting dataset back to the NodeJS server.
-
-ZeroMQ message queue was utilized for communications between the NodeJS server and the Go socket server. A POST method also calls a ZeroMQ requests that passes the scraped data to the Go server. Once the dataset is processed, the processed information is transferred back to the NodeJS server and the results are rendered to the client.
-
+This project is a web application targeted for the use by residential real estate buyers. The application accepts the address of a property and a member id, the member id is issued to a Realtor with a subscription to the service, and the id is distributed to their clients for their use. Once a valid address and member id is submitted, the application returns details relevant for a buyer, including: property details, city summary, city crime rate/statistics, neighbourhood school rankings, and local amenities.
 
 ## Steps To Run Project
 
-Unfortunately, I was unable to get vagrant and chef to deploy the necessary environment for easy deployment of the project. With the necessary packages, the project may be run by:
 1. Navigating to the project directory
 2. Starting the Node server (node app.js)
-3. Building the Go program (go build functions.go)
-4. Starting the Go server (./functions)
-5. Opening a browser and navigating to localhost:3000
-6. This will load the index page, prompting entry of a URL, Container Details, and Container Entry Details.
-
-(1) example URL: https://www.monster.com/jobs/search/?q=Software-Developer&where=Seattle	
-This is the hyperlink to the website with results in a container you wish to scrape.
-
-(2) example Container Details: SearchResults,section,card-content
-This describes the container which holds the results. This may be expressed as a section, table, div, etc HTML tag. We need the class name, HTML tag, and class, expressed in a comma separated form. 
-
-(3) example Container Entry Details: [h2,div,div],[title,company,location]
-This is the actual container description that holds all desired information. Here we want the position name, company, and location. We need the HTML tag and class for each piece of information, expressed in arrays (encased in []) separated by commas with no spaces.
-
-See screencaps folder for screenshots of the project
+3. Connect in browser with: localhost:3000
 
 ### Necessary external packages to run include:
-Javascript: npm, express, body-parser
-Python: beautifulsoup4
-Go: libzmq3-dev (dependency for zmq4), zmq4, encoding/json
-
-## 
+Javascript/Node: npm, express, body-parser, ejs
 
 ## Features
 
-Overview Page:
+Overview Tab:
+- Catchment schools of each type and their rankings
+- Select criminal activity stats. Compare to overal average of cities in the province?
+- Nearest stores, gyms, and shopping center
 
-School overview
-- assigned primary and secondary school of address (primary, secondary, early french immersion, late french immersion, secondary french immersion)
+School Tab:
+- assigned (catchment) primary and secondary school of address (primary, secondary, early french immersion, late french immersion, secondary french immersion)
 - school ranking (primary, secondary, early french immersion, late french immersion, secondary french immersion)
-
-School Page:
-
 - assigned primary and secondary school of address
-https://mybaragar.com/index.cfm?event=page.SchoolLocatorPublic&DistrictCode=bc41
-https://stackoverflow.com/questions/4423272/how-to-extract-links-and-titles-from-a-html-page (grab html attribute from searches)
+  - https://mybaragar.com/index.cfm?event=page.SchoolLocatorPublic&DistrictCode=bc41
+  - https://stackoverflow.com/questions/4423272/how-to-extract-links-and-titles-from-a-html-page (grab html attribute from searches)
 - locations of all private and public schools in the city
-https://www.compareschoolrankings.org/
+  -https://www.compareschoolrankings.org/
 - school ranking
+- Integrate Google Maps: Schools by type (primary, secondary, etc.) marked on map with ranking
 
-Crime Page:
+Crime Tab:
+- Vancouver Police Department
+   - https://vancouver.ca/police/organization/planning-research-audit/neighbourhood-statistics.html
+- RCMP (Burnaby, Surrey, Maple Ridge, etc.)
+   - http://bc.rcmp-grc.gc.ca/ViewPage.action?siteNodeId=27&languageId=1&contentId=-1
+   - choose location -> select website link on (location) page -> Crime Stats & Reports
+- West Vancouver
+   - https://westvanpolice.ca/
+   - no stats on website, found old tweet with stats: check assets folder
+- Compare Location Stats tool (compare Burnaby to Vancouver)
+- Integrate Google Maps: Choose location to compare via map
+
+
+Local Ammenities Tab:
+- Integrate Google Maps: local goccery stores, shopping centers, gyms, etc.
+- Local events? Perhaps using city website to rip from events page

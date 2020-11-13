@@ -1,0 +1,17 @@
+<%- include ('./partials/header.ejs') %>
+
+<div class="content-wrap">
+  <header>
+ 		<h1>Index Page</h1>
+  </header>
+  <p>
+    Description of the webapp
+  </p>
+  <form method="post">
+    <input type="text" id="address" name="address" placeholder="Property Addresss"><br>
+    <input type="text" id="memberid" name="memberid" placeholder="Member ID"><br>
+    <input type="submit" value="Submit" formaction="/submit" style="cursor: pointer;">
+  </form>
+</div>
+
+<%- include ('./partials/footer.ejs') %>
