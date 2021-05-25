@@ -7,11 +7,16 @@ This project is a web application targeted for the use by residential real estat
 ## Steps To Run Project
 
 1. Navigating to the project directory
-2. Starting the Node server (node app.js)
-3. Connect in browser with: localhost:3000
+2. Start local mongodb with database named "MN_greaterVancouver"(default port, 27017)
+3. Start the Node server (node app.js)
+4. Connect in browser with: localhost:3000
 
-### Necessary external packages to run include:
-Javascript/Node: npm, express, body-parser, ejs
+## Technology Stack
+
+### Web Application
+- Linux, NodeJS server, MongoDB, Javascript
+Dependencies:
+- NodeJS: navigate to project directory, use "npm list"
 
 ## Features
 
@@ -42,7 +47,6 @@ Crime Tab:
    - no stats on website, found old tweet with stats: check assets folder
 - Compare Location Stats tool (compare Burnaby to Vancouver)
 - Integrate Google Maps: Choose location to compare via map
-
 
 Local Ammenities Tab:
 - Integrate Google Maps: local goccery stores, shopping centers, gyms, etc.
