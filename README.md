@@ -39,6 +39,7 @@ School Tab:
 Crime Tab:
 - Vancouver Police Department
    - https://vancouver.ca/police/organization/planning-research-audit/neighbourhood-statistics.html
+   - https://vpd.ca/police/organization/planning-research-audit/neighbourhood-statistics.html
 - RCMP (Burnaby, Surrey, Maple Ridge, etc.)
    - http://bc.rcmp-grc.gc.ca/ViewPage.action?siteNodeId=27&languageId=1&contentId=-1
    - choose location -> select website link on (location) page -> Crime Stats & Reports
