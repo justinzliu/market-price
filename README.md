@@ -46,6 +46,9 @@ Crime Tab:
 - West Vancouver
    - https://westvanpolice.ca/
    - no stats on website, found old tweet with stats: check assets folder
+- Stats Canada
+   - https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3510017701&pickMembers%5B0%5D=1.1&pickMembers%5B1%5D=2.1&cubeTimeFrame.startYear=2015&cubeTimeFrame.endYear=2019&referencePeriods=20150101%2C20190101
+   - https://www12.statcan.gc.ca/census-recensement/2016/dp-pd/prof/search-recherche/lst/results-resultats.cfm?Lang=E&TABID=1&G=1&Geo1=&Code1=&Geo2=&Code2=&GEOCODE=59&type=0
 - Compare Location Stats tool (compare Burnaby to Vancouver)
 - Integrate Google Maps: Choose location to compare via map
 
