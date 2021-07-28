@@ -19,7 +19,8 @@ Dependencies:
 - NodeJS: navigate to project directory, use "npm list"
 
 ## Features
-
+General:
+- Capability of comparing two locations, one by given address and another by city
 Overview Tab:
 - Catchment schools of each type and their rankings
 - Select criminal activity stats. Compare to overal average of cities in the province?
