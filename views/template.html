@@ -9,27 +9,88 @@
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
         <title>Hello, world!</title>
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="../public/stylesheets/main_styles.css" type="text/css" />
+        <!-- Javascript -->
+        <script src="../public/javascripts/main.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     </head>
     <body>
-        <div class="jumbotron text-center" style="margin-bottom:0">
-        <h1>Hello, world!</h1>
-        <p>stuff stuff stuff</p>
+        <div id="header" class="jumbotron text-center">
+            <h1>Hello, world!</h1>
+            <p>stuff stuff stuff</p>
         </div>
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <a class="navbar-brand" href="#">Navbar</a>
         </nav>
-        <div class="btn-group btn-group-lg">
-            <button type="button" class="btn btn-primary">Overview</button>
-            <button type="button" class="btn btn-primary">Schools</button>
-            <button type="button" class="btn btn-primary">Crime</button>
-            <button type="button" class="btn btn-primary">Local</button>
-        </div>
-        <div class="row border">
-            <div class="col-sm-9">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div id="space-0" class="container-xxl"></div>
+        <div class="container-xxl">
+            <div id="btn-container" class="container-md">
+                <button id="btn-overview" type="button" class="btn btn-default border">Overview</button>
+                <button id= "btn-schools" type="button" class="btn btn-primary">Schools</button>
+                <button id= "btn-crime" type="button" class="btn btn-danger">Crime</button>
+                <button id= "btn-local" type="button" class="btn btn-success">Local</button>
             </div>
-            <div class="col-sm-3">
-                <p>Picture</p>
+            <div class="row border">
+                <!-- currently selected tab displayed -->
+                <div id="tab-content" class="col-sm-9">
+                    <!-- overview tab -->
+                    <div id="tab-overview" class="tab-content">
+                        <p>This will contain content for the overview section. Content will be added once features in other sections have been implemented, as the content of this section will highlight the most important subsections of other sections.</p>
+                    </div>
+                    <!-- schools tab -->
+                    <div id="tab-schools" class="tab-content">
+                        <p>This will contain content for the schools section. Content will be added once features in other sections have been implemented, as the content of this section will highlight the most important subsections of other sections.</p>
+                        <div id="map"></div>
+                        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0YiNK4ltKqEjgqLmphbAPRAvRePvRefY&callback=initMap&libraries=&v=weekly" async></script>
+                    </div>
+                    <!-- crime tab -->
+                    <div id="tab-crime" class="tab-content">
+                        <p>This will contain content for the crime section. Content will be added once features in other sections have been implemented, as the content of this section will highlight the most important subsections of other sections.</p>
+                        <table class="table table-striped">
+                            <div class="col-sm-2 border-bottom table-title">Total Violations</div>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Unit of Measurement</th>
+                                    <th scope="col">Municipality</th>
+                                    <th scope="col">Province/State</th>
+                                    <th scope="col">Country</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Incidents</th>
+                                    <td>n/a</td>
+                                    <td>n/a</td>
+                                    <td>n/a</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Rate Per 100,000 Population</th>
+                                    <td>n/a</td>
+                                    <td>n/a</td>
+                                    <td>n/a</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">% Change Previous Year</th>
+                                    <td>n/a</td>
+                                    <td>n/a</td>
+                                    <td>n/a</td>
+                                </tr>
+                            </tbody>
+                            <caption>
+                                <p>Total Violations may include other criminal offence categories not encompassed on this page, for brevity.</p>
+                                <p class="content-source">Data retrieved from </p>
+                            </caption>
+                        </table>
+                    </div>
+                    <!-- local tab -->
+                    <div id="tab-local" class="tab-content">
+                        <p>This will contain content for the local section. Content will be added once features in other sections have been implemented, as the content of this section will highlight the most important subsections of other sections.</p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <p>Realtor Advertising</p>
+                </div>
             </div>
         </div>
         <!-- Optional JavaScript; choose one of the two! -->
