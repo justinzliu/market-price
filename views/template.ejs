@@ -1,0 +1,107 @@
+<!-- ctrl + shift + v to preview html -->
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <title>Hello, world!</title>
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="../public/stylesheets/main_styles.css" type="text/css" />
+        <!-- Javascript -->
+        <script src="../public/javascripts/main.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    </head>
+    <body>
+        <div id="header" class="jumbotron text-center">
+            <h1>Hello, world!</h1>
+            <p>stuff stuff stuff</p>
+        </div>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <a class="navbar-brand" href="#">Navbar</a>
+        </nav>
+        <div id="space-0" class="container-xxl"></div>
+        <div class="container-xxl">
+            <div id="btn-container" class="container-md">
+                <button id="btn-overview" type="button" class="btn btn-default border">Overview</button>
+                <button id= "btn-schools" type="button" class="btn btn-primary">Schools</button>
+                <button id= "btn-crime" type="button" class="btn btn-danger">Crime</button>
+                <button id= "btn-local" type="button" class="btn btn-success">Local</button>
+            </div>
+            <div class="row border">
+                <!-- currently selected tab displayed -->
+                <div id="tab-content" class="col-sm-9">
+                    <!-- overview tab -->
+                    <div id="tab-overview" class="tab-content">
+                        <p>This will contain content for the overview section. Content will be added once features in other sections have been implemented, as the content of this section will highlight the most important subsections of other sections.</p>
+                    </div>
+                    <!-- schools tab -->
+                    <div id="tab-schools" class="tab-content">
+                        <p>This will contain content for the schools section. Content will be added once features in other sections have been implemented, as the content of this section will highlight the most important subsections of other sections.</p>
+                        <div id="map"></div>
+                        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0YiNK4ltKqEjgqLmphbAPRAvRePvRefY&callback=initMap&libraries=&v=weekly" async></script>
+                    </div>
+                    <!-- crime tab -->
+                    <div id="tab-crime" class="tab-content">
+                        <p>This will contain content for the crime section. Content will be added once features in other sections have been implemented, as the content of this section will highlight the most important subsections of other sections.</p>
+                        <table class="table table-striped">
+                            <div class="col-sm-2 border-bottom table-title">Total, all violations</div>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Unit of Measurement</th>
+                                    <th scope="col">Municipality</th>
+                                    <th scope="col">Province/State</th>
+                                    <th scope="col">Country</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Incidents</th>
+                                    <td><%=crimes[0].incidents%></td>
+                                    <td>n/a</td>
+                                    <td>n/a</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Rate Per 100,000 Population</th>
+                                    <td>n/a</td>
+                                    <td>n/a</td>
+                                    <td>n/a</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">% Change Previous Year</th>
+                                    <td>n/a</td>
+                                    <td>n/a</td>
+                                    <td>n/a</td>
+                                </tr>
+                            </tbody>
+                            <caption>
+                                <p>Total Violations may include other criminal offence categories not encompassed on this page, for brevity.</p>
+                                <p class="content-source">Data retrieved from </p>
+                            </caption>
+                        </table>
+                    </div>
+                    <!-- local tab -->
+                    <div id="tab-local" class="tab-content">
+                        <p>This will contain content for the local section. Content will be added once features in other sections have been implemented, as the content of this section will highlight the most important subsections of other sections.</p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <p>Realtor Advertising</p>
+                </div>
+            </div>
+        </div>
+        <!-- Optional JavaScript; choose one of the two! -->
+
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+        <!-- Option 2: Separate Popper and Bootstrap JS -->
+        <!--
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+        -->
+    </body>
+</html>

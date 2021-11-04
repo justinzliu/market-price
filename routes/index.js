@@ -7,11 +7,13 @@ router.get('/', function(req,res) {
     res.render('index');
 });
 
+/*
 router.post('/submit', function(req,res) {
 	var addr = req.body.address;
 	var id = req.body.memberid;
 	var result = {address: addr, memberid: id};
 	res.render('result', result);
 });
+*/
 
 module.exports = router;
