@@ -1,5 +1,18 @@
 var mysql = require('mysql2');
 
+///////////////
+/// GLOBALS ///
+///////////////
+
+var GLOBALS = {
+    "TABLES": ["schools", "crimes", "census"],
+    "TABLES_COUNTRY_EXCLUDE": ["schools"]
+};
+
+/////////////////
+/// FUNCTIONS ///
+/////////////////
+
 module.exports = {
     Location: class Location {
         constructor(loc_id, country, province, city) {
@@ -16,6 +29,22 @@ module.exports = {
         add_id(loc_id) {
             this.loc_id = loc_id 
         }
+
+        has_id() {
+            return (this.loc_id != null);
+        }
+
+        loc_type() {
+            let ltype = "city";
+            if(this.country == this.city) {
+                ltype = "country";
+            }
+            else if(this.province == this.city) {
+                ltype = "province";
+            }
+            return ltype;
+        }
+
     },
 
     connect: function() {
@@ -28,6 +57,38 @@ module.exports = {
         return connection
     },
 
+    //locations will first be called as a list with a single location (specific city), relevent locations will be added on in the initial get_data call.
+    get_data: function(connection, locations, callback, callback_args){
+        //initial get_data call. Locations only contains city and will need relevent county and province appended to list
+        if (locations.length == 1) {
+            let country = module.exports.Location.init_partial(locations[0].country, locations[0].country, locations[0].country);
+            let province = module.exports.Location.init_partial(locations[0].country, locations[0].province, locations[0].province);
+            locations.push(country, province);
+        }
+        //loc_index = locations.findIndex((element) => {return !element.has_id();}); //not supported by all browsers
+        let loc_index;
+        locations.some((location, index) => {loc_index = index; return !location.has_id()});
+        //a location missing id, get loc_id for location
+        if(!locations[loc_index].has_id()) {
+            let cmd = "SELECT * FROM `locations` WHERE country = ? AND province = ? AND city = ?";
+            connection.query(cmd, [locations[loc_index].country, locations[loc_index].province, locations[loc_index].city], function(err, result) {
+                if(err) {
+                    console.log("get_data: ", err);
+                    return;
+                }
+                locations[loc_index].add_id(result[0].loc_id);
+                //get next loc_id for location in locations
+                module.exports.get_data(connection, locations, callback, callback_args);
+            });
+        }
+        //all locations have ids
+        else {
+            //get records for locations with loc_id
+            callback_args["results"] = {"city": {}, "province": {}, "country": {}};
+            select_data(connection, locations, JSON.parse(JSON.stringify(GLOBALS["TABLES"])), callback, callback_args);
+        }
+    },
+    /*
     get_data: function(connection, location, tables, callback, callback_args){
         //get loc_id for given location ( Location(country, province, city) )
         let cmd = "SELECT * FROM `locations` WHERE country = ? AND province = ? AND city = ?";
@@ -43,6 +104,7 @@ module.exports = {
             }
         });
     },
+    */
 
     //DEBUG: REMOVE WHEN PRODUCTION READY
     test_connect: function(){
@@ -73,6 +135,40 @@ module.exports = {
     }
 }
 
+function select_data(connection, locations, tables, callback, callback_args) {
+    //get records from tables for locations[0]
+    if(tables.length) {
+        let cmd = "SELECT * FROM ?? WHERE loc_id = ?";
+        connection.query(cmd, [tables[0], locations[0].loc_id], function(err, result) {
+            if(err) {
+                console.log("select_data: ", err);
+                return;
+            }
+            let table_type = tables[0];
+            let location_type = locations[0].loc_type();
+            callback_args["results"][location_type][table_type] = result;
+            tables.shift();
+            select_data(connection, locations, tables, callback, callback_args);
+        });
+    }
+    //recurse for each location in locations
+    else if (locations.length > 1) {
+        locations.shift();
+        tables = JSON.parse(JSON.stringify(GLOBALS["TABLES"])); //deepcopy GLOBALS["TABLES"]
+        if (locations[0].loc_type != "city") {
+            //location[0] is city
+            tables = GLOBALS["TABLES"].filter((table) => {return (GLOBALS["TABLES_COUNTRY_EXCLUDE"].indexOf(table) == -1);});
+        }
+        select_data(connection, locations, tables, callback, callback_args);
+    }
+    //perform callback and end connection
+    else {
+        callback(callback_args);
+        connection.end();
+    }
+}
+
+/*
 function select(connection, location, tables, callback, callback_args, results) {
     //get records for given loc_id
     if(tables.length) {
@@ -93,6 +189,7 @@ function select(connection, location, tables, callback, callback_args, results) 
         connection.end();
     }
 }
+*/
 
 /////////////////
 ///DEPRECIATED///

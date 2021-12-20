@@ -22,11 +22,24 @@ body {
     font-size: large;
 }
 
+.subheader {
+    padding-left: 10px;
+    margin-left: 10px;
+}
+
 #map {
     height: 500px;
     width: 100%;
 }
 
-#tab-schools, #tab-crime, #tab-local {
+.tab-content {
+    display: none;
+}
+
+#tab-overview {
+    display: block;
+}
+
+#tab-schools, #tab-census, #tab-crime, #tab-local {
     display: none;
 }
