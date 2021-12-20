@@ -28,7 +28,8 @@
             <div id="btn-container" class="container-md">
                 <button id="btn-overview" type="button" class="btn btn-default border">Overview</button>
                 <button id= "btn-schools" type="button" class="btn btn-primary">Schools</button>
-                <button id= "btn-crime" type="button" class="btn btn-danger">Crime</button>
+                <button id= "btn-census" type="button" class="btn btn-info">Census</button>
+                <button id= "btn-crimes" type="button" class="btn btn-danger">Crimes</button>
                 <button id= "btn-local" type="button" class="btn btn-success">Local</button>
             </div>
             <div class="row border">
@@ -42,46 +43,14 @@
                     <div id="tab-schools" class="tab-content">
                         <p>This will contain content for the schools section. Content will be added once features in other sections have been implemented, as the content of this section will highlight the most important subsections of other sections.</p>
                         <div id="map"></div>
-                        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0YiNK4ltKqEjgqLmphbAPRAvRePvRefY&callback=initMap&libraries=&v=weekly" async></script>
                     </div>
-                    <!-- crime tab -->
-                    <div id="tab-crime" class="tab-content">
+                    <!-- census tab -->
+                    <div id="tab-census" class="tab-content">
+                        <p>This will contain content for the census section. Content will be added once features in other sections have been implemented, as the content of this section will highlight the most important subsections of other sections.</p>
+                    </div>
+                    <!-- crimes tab -->
+                    <div id="tab-crimes" class="tab-content">
                         <p>This will contain content for the crime section. Content will be added once features in other sections have been implemented, as the content of this section will highlight the most important subsections of other sections.</p>
-                        <table class="table table-striped">
-                            <div class="col-sm-2 border-bottom table-title">Total, all violations</div>
-                            <thead>
-                                <tr>
-                                    <th scope="col">Unit of Measurement</th>
-                                    <th scope="col">Municipality</th>
-                                    <th scope="col">Province/State</th>
-                                    <th scope="col">Country</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">Incidents</th>
-                                    <td><%=crimes[0].incidents%></td>
-                                    <td>n/a</td>
-                                    <td>n/a</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Rate Per 100,000 Population</th>
-                                    <td>n/a</td>
-                                    <td>n/a</td>
-                                    <td>n/a</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">% Change Previous Year</th>
-                                    <td>n/a</td>
-                                    <td>n/a</td>
-                                    <td>n/a</td>
-                                </tr>
-                            </tbody>
-                            <caption>
-                                <p>Total Violations may include other criminal offence categories not encompassed on this page, for brevity.</p>
-                                <p class="content-source">Data retrieved from </p>
-                            </caption>
-                        </table>
                     </div>
                     <!-- local tab -->
                     <div id="tab-local" class="tab-content">
@@ -93,6 +62,11 @@
                 </div>
             </div>
         </div>
+        <script>
+            // stringify the data passed from router to ejs (within the EJS template only)
+            var parsed_results = <%- JSON.stringify(results) %>;
+            var parsed_key = <%- JSON.stringify(api_key) %>;
+        </script>
         <!-- Optional JavaScript; choose one of the two! -->
 
         <!-- Option 1: Bootstrap Bundle with Popper -->
